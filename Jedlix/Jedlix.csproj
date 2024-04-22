@@ -15,9 +15,4 @@
       <ProjectReference Include="..\Jedlix.Application\Jedlix.Application.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Dtos\" />
-      <Folder Include="Extensions\" />
-    </ItemGroup>
-
 </Project>
