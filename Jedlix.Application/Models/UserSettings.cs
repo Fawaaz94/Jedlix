@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Jedlix.Application.Models;
 
 public class UserSettings
