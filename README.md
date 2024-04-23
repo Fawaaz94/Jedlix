@@ -1,7 +1,9 @@
 # Jedlix
 
-In this application we are taking in a json file then gets deserialized into a new type.
-With this type we can do the necessary manipulations to build a charging schedule - which returned is a json file to be downloaded.
+In this application we are taking in a json file then gets deserialized and processed.
+With the given json we can do the necessary manipulations to build a charging schedule.
+
+I have created two endpoints, one that returns a json file and another that returns a json string.
 
 The charging charging schedule is mainly based on:
 
@@ -12,5 +14,10 @@ The charging charging schedule is mainly based on:
 - With these we can build a schedule that helps the user determine what are the best times to be charging optimized for the lowest energy bill
 
 Technologies used:
+
 - Mediatr + CQRS
 - Swagger for API enpoints
+
+Return types:
+- Json file
+- Json string 
