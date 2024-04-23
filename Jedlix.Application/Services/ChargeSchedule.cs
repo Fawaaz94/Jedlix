@@ -39,7 +39,7 @@ public static class ChargeSchedule
             // Check if tariff is in range
             var (applicableTariff, isApplicable) = FindApplicableTariff(userSettings.Tariffs, currentTime);
             
-            // if (!isApplicable) continue;
+            if (!isApplicable) continue;
             
             var isCharging = ShouldCharge(userSettings.Tariffs, applicableTariff, carData.CurrentBatteryLevel, desiredChargeInKwh);
             
