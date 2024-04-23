@@ -13,7 +13,7 @@ public static class Helpers
         return DateTime.ParseExact(timeString, "HH:mm", null);
     }
 
-    public static DateTime StringToDateTimeUTC(this string timeString)
+    public static DateTime StringToDateTimeUtc(this string timeString)
     {
         const string format = "yyyy-MM-ddTHH:mm:ssZ";
         return DateTime

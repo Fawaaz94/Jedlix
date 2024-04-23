@@ -12,7 +12,7 @@ public static class ChargeSchedule
         var carData = inputData.CarData;
         var userSettings = inputData.UserSettings;
         
-        var currentTime = inputData.StartingTime.StringToDateTimeUTC();
+        var currentTime = inputData.StartingTime.StringToDateTimeUtc();
         var leavingTime = userSettings.LeavingTime.StringToDateTime();
         
         var desiredChargeInKwh = (userSettings.DesiredStateOfCharge / 100.0M) * carData.BatteryCapacity;
@@ -39,11 +39,9 @@ public static class ChargeSchedule
             // Check if tariff is in range
             var (applicableTariff, isApplicable) = FindApplicableTariff(userSettings.Tariffs, currentTime);
             
-            if (!isApplicable) continue;
-            
             var isCharging = ShouldCharge(userSettings.Tariffs, applicableTariff, carData.CurrentBatteryLevel, desiredChargeInKwh);
             
-            var nextStartTime = applicableTariff.EndTime.StringToDateTime();
+            var nextStartTime = isApplicable ? applicableTariff.EndTime.StringToDateTime() : leavingTime;
             
             var chargingDuration = (nextStartTime - currentTime).Hours;
             
@@ -57,7 +55,7 @@ public static class ChargeSchedule
             chargingSchedule.Add( new ChargingInterval
             {
                 StartTime = currentTime,
-                EndTime = nextStartTime,
+                EndTime = nextStartTime.ToUniversalTime(),
                 IsCharging = isCharging
             });
 
